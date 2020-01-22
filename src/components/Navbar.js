@@ -3,13 +3,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import React, { Component } from 'react';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 
 export class Navbar extends Component {
 	render() {
 		return (
 			<AppBar>
-				<Toolbar className='nav-container'>
+				<Toolbar className="nav-container">
 					<Button color="inherit" component={Link} to="/">
 						Home
 					</Button>
