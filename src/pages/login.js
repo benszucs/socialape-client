@@ -11,32 +11,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AppIcon from '../images/icon.png';
 
-const styles = {
-	form: {
-		textAlign: 'center',
-	},
-	image: {
-		margin: '20px auto',
-	},
-	pageTitle: {
-		margin: '10px auto',
-	},
-	textField: {
-		margin: '10px auto',
-	},
-	button: {
-		margin: '20px 0 10px 0',
-		position: 'relative',
-	},
-	customError: {
-		color: 'red',
-		fontSize: '0.8rem',
-		marginTop: 10,
-	},
-	progress: {
-		position: 'absolute',
-	},
-};
+const styles = theme => ({
+	...theme.forms,
+});
 
 export class Login extends Component {
 	constructor() {
@@ -61,6 +38,7 @@ export class Login extends Component {
 			.post('/login', userData)
 			.then(res => {
 				console.log(res.data);
+				localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
 				this.setState({ loading: false });
 				this.props.history.push('/');
 			})
