@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import jwtDecode from 'jwt-decode';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -15,15 +14,15 @@ import themeFile from './util/theme';
 
 const theme = createMuiTheme(themeFile);
 
-let authenticated;
-const token = localStorage.FBIdToken;
-if (token) {
-	const decodedToken = jwtDecode(token);
-	if (decodedToken.exp * 1000 < Date.now()) {
-		window.location.href = '/login';
-		authenticated = false;
-	} else authenticated = true;
-}
+let authenticated = false;
+// const token = localStorage.FBIdToken;
+// if (token) {
+// 	const decodedToken = jwtDecode(token);
+// 	if (decodedToken.exp * 1000 < Date.now()) {
+// 		window.location.href = '/login';
+// 		authenticated = false;
+// 	} else authenticated = true;
+// }
 
 function App() {
 	return (
